@@ -107,7 +107,7 @@ app.get('/sse', auth, (req, res) => {
   const sessionId = crypto.randomUUID();
   sessions.set(sessionId, res);
 
-  const baseUrl = `${req.protocol}://${req.get('host')}`;
+  const baseUrl = `https://${req.get('host')}`;
   res.write(`event: endpoint\ndata: ${baseUrl}/message?sessionId=${sessionId}&secret=${SECRET}\n\n`);
 
   const keepalive = setInterval(() => {
